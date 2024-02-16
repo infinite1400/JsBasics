@@ -3,6 +3,7 @@
 //     console.log("normal function");
 // }
 
+const { default: axios } = require("axios");
 const { resolve } = require("scripts");
 
 // const arrow = () => {
@@ -75,7 +76,7 @@ const { resolve } = require("scripts");
 //     console.log("Promise finished")
 // })
 
-const axios = require("axios");
+// const axios = require("axios");
 // const data = axios.get("https://cat-fact.herokuapp.com/facts");
 // data.then((res) => {
 //     console.log(res.data);
@@ -85,24 +86,23 @@ const axios = require("axios");
 //     console.log("Promise Finished");
 // })
 
-const fetchData = async () => {
-    try {
-        const res = await axios.get("https://cat-fact.herokuapp.com/facts");
-        let data = res.data;
-        // console.log(data);
-        let x = 1;
-        data.map((obj) => {
-            console.log(x + ":" + obj.text);
-            x++;
-        })
-    }
-    catch (err) {
-        console.log(err);
-    }
-    finally{
-        console.log("finally executed");
-    }
-}
-fetchData();
-
+// const fetchData = async () => {
+//     try {
+//         const res = await axios.get("https://cat-fact.herokuapp.com/facts");
+//         let data = res.data;
+//         // console.log(data);
+//         let x = 1;
+//         data.map((obj) => {
+//             console.log(x + ":" + obj.text);
+//             x++;
+//         })
+//     }
+//     catch (err) {
+//         console.log(err);
+//     }
+//     finally{
+//         console.log("finally executed");
+//     }
+// }
+// fetchData();
 
