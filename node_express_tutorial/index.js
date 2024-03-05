@@ -2,7 +2,6 @@
 import express from 'express'
 import usersRoutes from './routes/users.js'
 import mongoose from 'mongoose';
-import User from './models/UserSchema.js'
 mongoose.connect('mongodb://127.0.0.1:27017',{dbName : "Learning_Database"})
     .then(() => console.log('Database Connected'))
     .catch((err) => console.log(err))

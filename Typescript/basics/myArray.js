@@ -1,0 +1,11 @@
+var superHeros = [];
+superHeros.push("Thor");
+console.log(superHeros);
+// const heroPower : number[]=[];
+var heroPower = [];
+heroPower.push(14);
+console.log(heroPower);
+var allUsers = [];
+allUsers.push({ name: "Murari", isActive: false });
+allUsers.push({ name: "Ashutosh", isActive: true });
+console.log(allUsers);

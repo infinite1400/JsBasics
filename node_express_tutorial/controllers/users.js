@@ -27,7 +27,8 @@ export const getUserWithId = async (req, res) => {
     try {
         const { id } = req.params;
         // console.log(id);
-        const user = await User.findById({ _id: id });
+        const user = await User.findById(id);
+        // console.log(user)
         if (user) {
             // console.log(user);
             res.status(200).send(user);
