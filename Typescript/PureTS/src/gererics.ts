@@ -12,7 +12,7 @@ const func2 = <Type>(par: Type): Type => {
 
 console.log(func("5"));
 console.log(func1(5));
-console.log(func2([1, 2, 3, 4]));
+console.log(func2([1, 2, 3, 4 ,"5" , true]));
 
 interface Bootle {
   brand: string;
@@ -23,7 +23,7 @@ const func3 = <Bootle>(bootle: Bootle): Bootle => {
   return bootle;
 };
 
-// <T,> uses to show that it is generic ! 
+// <T,> uses to show that it is generic ! in reacte etc. 
 function getSearchProducts<T,>(products : T[]) : T{
     // do some database operations
     const myIndex=0;

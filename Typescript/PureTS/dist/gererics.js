@@ -10,11 +10,11 @@ const func2 = (par) => {
 };
 console.log(func("5"));
 console.log(func1(5));
-console.log(func2([1, 2, 3, 4]));
+console.log(func2([1, 2, 3, 4, "5", true]));
 const func3 = (bootle) => {
     return bootle;
 };
-// <T,> uses to show that it is generic ! 
+// <T,> uses to show that it is generic ! in reacte etc. 
 function getSearchProducts(products) {
     // do some database operations
     const myIndex = 0;

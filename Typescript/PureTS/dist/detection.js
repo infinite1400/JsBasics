@@ -12,6 +12,7 @@ function provideId(id) {
     }
     id.toLowerCase();
 }
+// it is not handling the case when string array object is empty ! 
 function printAll(strs) {
     if (strs) {
         if (typeof strs === "object") {
