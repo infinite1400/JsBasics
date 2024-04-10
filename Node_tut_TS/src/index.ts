@@ -6,6 +6,7 @@ import compression from "compression";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from 'dotenv'
+import router from "./router";
 dotenv.config();
 
 mongoose.Promise=Promise;
@@ -39,3 +40,8 @@ const Port=process.env.PORT || 8080
 server.listen(Port, () => {
   console.log(`Server running on http://localhost:${Port}/ `);
 });
+
+app.use('/',router());
+// app.get('/',(req : express.Request , res : express.Response)=>{
+//     res.send("hello world ! ");
+// })
