@@ -4,13 +4,13 @@ import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import compression from "compression";
 import cors from "cors";
-import mongoose, { mongo } from "mongoose";
-
-const MONGO_URI = "mongodb://127.0.0.1:27017";
+import mongoose from "mongoose";
+import dotenv from 'dotenv'
+dotenv.config();
 
 mongoose.Promise=Promise;
 mongoose
-  .connect(MONGO_URI,{
+  .connect(process.env.MONGO_URI,{
     dbName : "TS-Backend-learn"
   })
   .then(() => {
@@ -33,8 +33,9 @@ app.use(bodyParser.json());
 app.use(compression());
 app.use(cookieParser());
 
+
 const server = http.createServer(app);
-const Port = 8000;
+const Port=process.env.PORT || 8080
 server.listen(Port, () => {
   console.log(`Server running on http://localhost:${Port}/ `);
 });
