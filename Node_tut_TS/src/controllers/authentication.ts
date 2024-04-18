@@ -32,3 +32,45 @@ export const register = async (req: express.Request, res: express.Response) => {
     return res.sendStatus(400);
   }
 };
+
+export const login = async (req: express.Request, res: express.Response) => {
+  try {
+    const { email, password } = req.body;
+    if (!email || !password) {
+      window.alert("All fields are Mandatory !");
+      console.log("All fields are Mandatory !");
+      return res.sendStatus(400);
+    }
+
+    // .select is used here because default email and username is selected only 
+    // to select authentication we have to explicitly select it using 
+    // .select call ! kind of projection vala he ! 
+    const user = await getUserByEmail(email).select(
+      "+authentication.salt +authentication.password"
+    );
+    console.log(user);
+    if (!user) {
+      window.alert("User didn't exist ! ");
+      console.log("User didn't exist ! ");
+      return res.sendStatus(400);
+    }
+    const expectedHash = authentication(user.authentication.salt, password);
+
+    if (user.authentication.password != expectedHash) {
+      window.alert("Wrong Password ! Try");
+      console.log("Wrong Password ! Try");
+      return res.sendStatus(403);
+    }
+
+    const salt=random();
+    user.authentication.sessionToken=authentication(salt,user._id.toString());
+
+    await user.save();
+    res.cookie('MURARI-AUTH',user.authentication.sessionToken,{domain : 'localhost' , path : '/'});
+
+    return res.status(200).json(user).end();
+  } catch (error) {
+    console.log(error);
+    res.sendStatus(400);
+  }
+};
