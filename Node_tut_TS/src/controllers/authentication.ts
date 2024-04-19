@@ -44,7 +44,7 @@ export const login = async (req: express.Request, res: express.Response) => {
 
     // .select is used here because default email and username is selected only 
     // to select authentication we have to explicitly select it using 
-    // .select call ! kind of projection vala he ! 
+    // .select ! kind of projection vala he ! 
     const user = await getUserByEmail(email).select(
       "+authentication.salt +authentication.password"
     );
