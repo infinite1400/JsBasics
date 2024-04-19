@@ -8,6 +8,8 @@ import mongoose from "mongoose";
 import dotenv from 'dotenv'
 dotenv.config();
 
+import router from "./router";
+
 mongoose.Promise=Promise;
 mongoose
   .connect(process.env.MONGO_URI,{
@@ -39,3 +41,8 @@ const Port=process.env.PORT || 8080
 server.listen(Port, () => {
   console.log(`Server running on http://localhost:${Port}/ `);
 });
+
+app.use('/',router());
+// app.get('/',(req : express.Request , res : express.Response)=>{
+//     res.send("hello world ! ");
+// })

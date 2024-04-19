@@ -35,7 +35,7 @@ export const createUser = (values: Record<string, any>) => {
   return new UserModel(values).save().then((user) => user.toObject());
 };
 
-export const deleteUserModel = (id: string) => {
+export const deleteUserById = (id: string) => {
   return UserModel.findByIdAndDelete(id);
 };
 
