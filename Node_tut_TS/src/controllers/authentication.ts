@@ -37,7 +37,7 @@ export const login = async (req: express.Request, res: express.Response) => {
   try {
     const { email, password } = req.body;
     if (!email || !password) {
-      window.alert("All fields are Mandatory !");
+      // window.alert("All fields are Mandatory !");
       console.log("All fields are Mandatory !");
       return res.sendStatus(400);
     }
@@ -50,14 +50,16 @@ export const login = async (req: express.Request, res: express.Response) => {
     );
     console.log(user);
     if (!user) {
-      window.alert("User didn't exist ! ");
+      // window.alert("User didn't exist ! ");
       console.log("User didn't exist ! ");
       return res.sendStatus(400);
     }
     const expectedHash = authentication(user.authentication.salt, password);
-
+    // console.log(expectedHash);
+    // console.log(user.authentication.password);
+    // console.log(user.authentication.salt);
     if (user.authentication.password != expectedHash) {
-      window.alert("Wrong Password ! Try");
+      // window.alert("Wrong Password ! Try");
       console.log("Wrong Password ! Try");
       return res.sendStatus(403);
     }
